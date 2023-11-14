@@ -5,6 +5,7 @@ import subprocess
 import platform
 from TH02 import TH02
 from Servo import *
+from I2cLCDRGBBacklight import I2cLCDDisplay  # LCD library
 
 # led light blinking on and off
 led = mraa.Gpio(13)
@@ -84,10 +85,22 @@ while True:
 
     print("motor on")
 
+    # Start LCD screen --------
+    # LCD = I2cLCDInit()
+    # LCDLED = I2cLCDLEDInit()
+    # LEDColor(255,255,255)
+    messg1 = "Current temperature: " + tmp + " degrees"
+    messg2 = "It is " + weather + " today!"
+    # LCDPrint(messg1)
+    # LCDInstruction(0x80+0x28)
+    # LCDPrint(messg2)
+    # print(messg1 +". "+ messg2)
+    # End LCD screen --------
+
     # Sending the logs to splunk server for every one minute
     cmd_str = 'logger --udp --port 51514 --server splunkhome.myddns.me IoTid='
     cmd_str = cmd_str + platform.node() + ' light=' + lights + ' UV=' + uv + \
         ' Soil=' + soil + ' Temp=' + tmp + ' Hum=' + hum + ' Servo=' + arg
     subprocess.call(cmd_str, shell=True)
     # print("logged", platform.node())
-    time.sleep(60)
+    time.sleep(20)
