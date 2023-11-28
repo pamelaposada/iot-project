@@ -1,4 +1,4 @@
-# import relevant modultmphumes
+# import relevant modules
 import subprocess
 import time
 import os
