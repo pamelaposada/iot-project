@@ -1,0 +1,33 @@
+Step 1: Create a service descriptor, called a unit file (iot.service) under /etc/systemd/system
+
+"/etc/systemd/system/iot.service" file contents
+--------------------------------------
+[Unit]
+Description=IoT_Restart
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python /home/root/project/relayall.py
+
+[Install]
+WantedBy=multi-user.target
+
+--------------------------------------
+Step 2: Set the file permissions to 644
+---------------------------------------
+
+chmod 644 /etc/systemd/system/iot.service
+
+--------------------------------------
+Step 3: when you do mofifications to the service file, run the following command to reload th daemon
+--------------------------------------
+
+systemctl daemon-reload
+
+--------------------------------------
+Step 4: Enable the service by using systemctl:
+--------------------------------------
+
+systemctl enable iot.service
+
+--------------------------------------
