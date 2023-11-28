@@ -19,7 +19,7 @@ Step 2: Set the file permissions to 644
 chmod 644 /etc/systemd/system/iot.service
 
 --------------------------------------
-Step 3: when you do mofifications to the service file, run the following command to reload th daemon
+Step 3: when you do modifications to the service file, run the following command to reload th daemon
 --------------------------------------
 
 systemctl daemon-reload
