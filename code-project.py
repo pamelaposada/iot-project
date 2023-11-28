@@ -85,6 +85,7 @@ while True:
     elif weather == 'superhot':
         LCD.LEDColor(204, 0, 0)
 
+    # Display LED message based on weather and humdescription
     messg1 = "Current environment temperature: " + str(tmp) + " degrees"
     messg2 = "It is " + weather + " and " + humdescription + " here!"
     LCD.LCDPrint(messg1)
